@@ -26,7 +26,7 @@ for m in re.finditer(r'data-pr="([^"]+)"', page):
     refs.add(m.group(1).strip())
 missing = sorted(refs - keys)
 
-assets = set(re.findall(r'(?:src|href)="(assets/[^"]+)"', page))
+assets = set(re.findall(r'(?:src|href|poster)="(assets/[^"]+)"', page))
 disk = {"assets/" + f for f in os.listdir(os.path.join(ROOT, "assets"))}
 
 print(f"index.html  {os.path.getsize(os.path.join(ROOT,'index.html')):,} bytes")

@@ -25,7 +25,7 @@
   --ink:#16130f; --ink-2:#554c40; --ink-3:#8a7f70;
   --rule:#ddd5c6; --rule-2:#cbc0ac;
   --accent:#b8451f; --accent-soft:#c1502e; --deep:#2b6280;
-  --ok:#3f6b45; --warn:#8a6a1f;
+  --ok:#2b6280; --warn:#8a6a1f;
   /* sequential ramp: paper to vermillion, 6 steps */
   --r1:#f6ecdc; --r2:#eed7b9; --r3:#e4b98f; --r4:#d7936a; --r5:#c66b48; --r6:#a53c1b;
   --ramp-text:#3a2a1c;
@@ -42,7 +42,7 @@
     --ink:#f3ece0; --ink-2:#bcb0a0; --ink-3:#8d8272;
     --rule:#332d25; --rule-2:#463d31;
     --accent:#e2764b; --accent-soft:#d2653b; --deep:#79b3d3;
-    --ok:#7cb083; --warn:#d7ae5c;
+    --ok:#79b3d3; --warn:#d7ae5c;
     --r1:#241d17; --r2:#3a2a1d; --r3:#573823; --r4:#7c4728; --r5:#a3572d; --r6:#d06f3d;
     --ramp-text:#f6e8d8;
     --shadow:0 1px 0 rgba(0,0,0,.3);
@@ -53,7 +53,7 @@
   --ink:#f3ece0; --ink-2:#bcb0a0; --ink-3:#8d8272;
   --rule:#332d25; --rule-2:#463d31;
   --accent:#e2764b; --accent-soft:#d2653b; --deep:#79b3d3;
-  --ok:#7cb083; --warn:#d7ae5c;
+  --ok:#79b3d3; --warn:#d7ae5c;
   --r1:#241d17; --r2:#3a2a1d; --r3:#573823; --r4:#7c4728; --r5:#a3572d; --r6:#d06f3d;
   --ramp-text:#f6e8d8;
   --shadow:0 1px 0 rgba(0,0,0,.3);
@@ -94,6 +94,8 @@ hr{border:0;border-top:1px solid var(--rule);margin:0}
 section{scroll-margin-top:70px}
 .band{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
 .band--tight{padding-block:clamp(36px,5vw,60px)}
+.band--tint{background:var(--paper-2)}
+.band--tint .card,.band--tint .tw,.band--tint figure.plate img{background:var(--paper)}
 
 .eyebrow{
   font-family:var(--mono);font-size:11.5px;font-weight:500;
@@ -143,31 +145,37 @@ h3.sub{font-size:clamp(20px,1.9vw,25px);margin:0 0 .4em}
 .spine li.on a{opacity:1;color:var(--accent);transform:translateX(3px)}
 
 /* ─────────────────────────── hero ─────────────────────────── */
-.hero{padding-block:clamp(42px,7vw,84px) clamp(30px,4vw,48px)}
+.hero{padding-block:clamp(42px,7vw,80px) clamp(30px,4vw,48px)}
+.hero__grid{display:grid;gap:clamp(26px,3vw,54px);align-items:end}
+@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1fr) 250px}}
 .hero__kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;
   text-transform:uppercase;color:var(--accent);margin:0 0 1.6rem}
 h1{font-size:clamp(38px,6.6vw,82px);line-height:1.01;letter-spacing:-.028em;
   font-variation-settings:"SOFT" 0,"WONK" 1;font-weight:400;max-width:15ch;margin:0 0 .34em}
 h1 em{font-style:italic;font-variation-settings:"SOFT" 40,"WONK" 1;color:var(--accent)}
 .hero__sub{font-size:clamp(19px,1.5vw,23px);color:var(--ink-2);max-width:56ch;line-height:1.5;margin:0 0 2rem}
-.meta{display:flex;flex-wrap:wrap;gap:0 2.2rem;font-family:var(--mono);font-size:12px;
-  color:var(--ink-3);line-height:2.1;border-top:1px solid var(--rule);padding-top:1rem;max-width:60ch}
-.meta b{color:var(--ink-2);font-weight:500}
+.meta{margin:0;font-family:var(--mono);font-size:12px;line-height:1.6;
+  border-top:1px solid var(--rule);padding-top:.95rem}
+@media (min-width:1000px){.meta{border-top:0;border-left:1px solid var(--rule);padding:.2rem 0 .2rem 1.4rem}}
+.meta dt{color:var(--ink-3);font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-top:.95rem}
+.meta dt:first-of-type{margin-top:0}
+.meta dd{margin:.2rem 0 0;color:var(--ink)}
 .meta a{border-bottom:1px solid var(--rule-2)}
 .meta a:hover{color:var(--accent);border-color:var(--accent)}
+.dot-sep{color:var(--rule-2)}
 
 /* headline figures */
 .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
-  gap:1px;background:var(--rule);border-block:1px solid var(--rule);margin-top:clamp(30px,4vw,46px)}
+  gap:1px;background:var(--rule);border-block:1px solid var(--rule);margin-top:clamp(34px,4.5vw,52px)}
 .fig{background:var(--paper);padding:1.05rem 1.1rem 1.15rem}
-.fig__n{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);line-height:1;
+.fig__n{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);line-height:1;font-optical-sizing:auto;
   font-variation-settings:"WONK" 0;font-weight:400;letter-spacing:-.02em;
   font-variant-numeric:lining-nums tabular-nums;display:block}
 .fig__l{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-3);margin-top:.5rem;display:block;line-height:1.45}
 
 /* ───────────────────── the field (signature) ───────────────────── */
-.field{margin-top:clamp(34px,5vw,54px)}
+.field{margin-top:clamp(38px,5.5vw,64px)}
 .field__hd{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem}
 .field__t{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-2)}
@@ -229,6 +237,8 @@ a.ref.bad{color:red;border-color:red}
 .card p{font-size:16.5px;color:var(--ink-2);margin-bottom:.9rem}
 .card figure{margin:1rem 0 .9rem}
 .card figure img{border:1px solid var(--rule);background:var(--paper-2)}
+.card figure video{border:1px solid var(--rule);background:var(--paper-3);width:100%;display:block}
+.duo-fig{max-width:820px}
 figcaption{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:.5rem;line-height:1.5}
 .bar-mini{height:3px;background:var(--rule);margin:.9rem 0 .55rem;position:relative;overflow:hidden}
 .bar-mini i{position:absolute;inset:0 auto 0 0;background:var(--accent);display:block}
@@ -356,26 +366,23 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 
 <!-- ══════════════════ HERO ══════════════════ -->
 <section id="top" class="wrap hero">
-  <p class="hero__kicker">Google Summer of Code 2026 &nbsp;/&nbsp; Final work product</p>
-  <h1>Teaching Lumen to speak <em>N&#8209;dimensional</em> science</h1>
-  <p class="hero__sub">
-    Lumen is strongest when data is a flat table. Most scientific data is a cube.
-    This project made xarray a first class citizen in Lumen, and fixed the layer
-    underneath it when that layer could not carry the weight.
-  </p>
-  <div class="meta">
-    <span>Organisation &nbsp;<b>HoloViz, under NumFOCUS</b></span>
-    <span>Mentors &nbsp;<b><a href="https://github.com/ahuang11">Andrew Huang</a></b>, <b><a href="https://github.com/amaloney">Andy Maloney</a></b></span>
-    <span>Contributor &nbsp;<b><a href="https://github.com/ghostiee-11">Aman Kumar</a></b></span>
-    <span>Period &nbsp;<b>4 March &ndash; 21 August 2026</b></span>
-  </div>
-
-  <div class="figs rv">
-    <div class="fig"><span class="fig__n" data-stat="all.merged">111</span><span class="fig__l">Pull requests merged</span></div>
-    <div class="fig"><span class="fig__n" data-stat="repos">20</span><span class="fig__l">Repositories</span></div>
-    <div class="fig"><span class="fig__n" data-stat="xarray_sql.merged">11</span><span class="fig__l">Merged into xarray&#8209;sql</span></div>
-    <div class="fig"><span class="fig__n" data-stat="issues">74</span><span class="fig__l">Issues reported</span></div>
-    <div class="fig"><span class="fig__n" data-stat="lines">18.8k</span><span class="fig__l">Lines merged</span></div>
+  <div class="hero__grid">
+    <div class="hero__lead">
+      <p class="hero__kicker">Google Summer of Code 2026 &nbsp;/&nbsp; Final work product</p>
+      <h1>Teaching Lumen to speak <em>N&#8209;dimensional</em> science</h1>
+      <p class="hero__sub">
+        Lumen is strongest when data is a flat table. Most scientific data is a cube.
+        This project made xarray a first class citizen in Lumen, and fixed the layer
+        underneath it when that layer could not carry the weight.
+      </p>
+    </div>
+    <dl class="meta">
+      <dt>Contributor</dt><dd><a href="https://github.com/ghostiee-11">Aman Kumar</a></dd>
+      <dt>Organisation</dt><dd>HoloViz, under NumFOCUS</dd>
+      <dt>Mentors</dt><dd><a href="https://github.com/ahuang11">Andrew Huang</a><br><a href="https://github.com/amaloney">Andy Maloney</a></dd>
+      <dt>Period</dt><dd>4 March &ndash; 21 August 2026</dd>
+      <dt>Elsewhere</dt><dd><a href="https://github.com/ghostiee-11">GitHub</a> &nbsp;<span class="dot-sep">&middot;</span>&nbsp; <a href="https://www.linkedin.com/in/aman-kumar-ai/">LinkedIn</a></dd>
+    </dl>
   </div>
 
   <!-- ── signature: the contribution field ── -->
@@ -388,6 +395,14 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <svg id="fieldsvg" role="img" aria-label="Grid of pull requests. Horizontal axis is week from March to August 2026, vertical axis is workstream. Cell shading is lines of merged code."></svg>
     </div>
     <div class="legend" id="fieldlegend"></div>
+  </div>
+
+  <div class="figs rv">
+    <div class="fig"><span class="fig__n" data-stat="all.merged">122</span><span class="fig__l">Pull requests merged</span></div>
+    <div class="fig"><span class="fig__n" data-stat="repos">21</span><span class="fig__l">Repositories</span></div>
+    <div class="fig"><span class="fig__n" data-stat="xarray_sql.merged">11</span><span class="fig__l">Merged into xarray&#8209;sql</span></div>
+    <div class="fig"><span class="fig__n" data-stat="issues">74</span><span class="fig__l">Issues reported</span></div>
+    <div class="fig"><span class="fig__n" data-stat="lines">20.4k</span><span class="fig__l">Lines merged</span></div>
   </div>
 </section>
 
@@ -731,7 +746,17 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
           of an extending-Lumen guide that shows how to build them. The repository has since
           been transferred into the HoloViz organisation.
         </p>
-        <p class="card__stat" data-ws-stat="owid"></p>
+        <figure class="duo-fig">
+          <video src="assets/owid-demo.mp4" poster="assets/owid-poster.jpg" controls muted
+                 playsinline preload="none"
+                 aria-label="Screen recording: asking Our World In Data a question in plain English inside Lumen and getting a chart back."></video>
+          <figcaption>
+            Asking a plain English question and getting an answer computed from OWID's own
+            series. Source, docs and the full demo:
+            <a href="https://github.com/holoviz-topics/lumen-ourworldindata">holoviz-topics/lumen-ourworldindata</a>.
+          </figcaption>
+        </figure>
+        <p class="card__stat">47 commits &middot; sole contributor &middot; 11 pull requests, all merged</p>
         <ul class="chips" data-prs="holoviz-topics/lumen-ourworldindata#1,holoviz-topics/lumen-ourworldindata#2,holoviz-topics/lumen-ourworldindata#3,holoviz-topics/lumen-ourworldindata#4,holoviz-topics/lumen-ourworldindata#5,holoviz-topics/lumen-ourworldindata#6,holoviz-topics/lumen-ourworldindata#7,holoviz-topics/lumen-ourworldindata#8,holoviz-topics/lumen-ourworldindata#9,holoviz-topics/lumen-ourworldindata#10,holoviz-topics/lumen-ourworldindata#11"></ul>
       </article>
 
@@ -759,7 +784,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 </section>
 
 <!-- ══════════════════ DEEP DIVE 1 ══════════════════ -->
-<section id="dive1" class="band">
+<section id="dive1" class="band band--tint">
   <div class="wrap">
     <div class="col prose">
       <p class="eyebrow">Deep dive one &nbsp;&middot;&nbsp; xarray-sql #167</p>
@@ -837,7 +862,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 </section>
 
 <!-- ══════════════════ DEEP DIVE 2 ══════════════════ -->
-<section id="dive2" class="band">
+<section id="dive2" class="band band--tint">
   <div class="wrap">
     <div class="col prose">
       <p class="eyebrow">Deep dive two &nbsp;&middot;&nbsp; lumen #1943</p>
@@ -1076,10 +1101,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <div class="wrap"><div class="foot-grid">
     <span>Aman Kumar &middot; GSoC 2026 &middot; HoloViz / NumFOCUS</span>
     <a href="https://github.com/ghostiee-11">github.com/ghostiee-11</a>
-    <a href="https://ghostiee-11.github.io/gsoc26/">Project blog</a>
-    <a href="https://www.linkedin.com/in/aman-kumar-ai/">LinkedIn</a>
-    <a href="https://github.com/ghostiee-11/gsoc-2026">Source of this page</a>
-    <span>Data read from the GitHub API, 23 August 2026</span>
+    <a href="https://www.linkedin.com/in/aman-kumar-ai/">linkedin.com/in/aman-kumar-ai</a>
   </div></div>
 </footer>
 
