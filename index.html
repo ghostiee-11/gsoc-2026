@@ -149,45 +149,46 @@ h3.sub{font-size:clamp(20px,1.9vw,25px);margin:0 0 .4em}
 .spine li.on a{opacity:1;color:var(--accent);transform:translateX(3px)}
 
 /* ─────────────────────────── hero ─────────────────────────── */
-.hero{padding-block:clamp(30px,3.4vw,46px) clamp(26px,3vw,40px)}
-.hero__grid{display:grid;gap:clamp(24px,3vw,48px);align-items:start}
-@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1fr) 236px}}
+.hero{padding-block:clamp(26px,5.5vw,84px) clamp(26px,5vw,76px)}
+.hero__grid{display:grid;gap:clamp(30px,3.4vw,52px);align-items:start}
+@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1fr) 248px}}
+.hero__lead{display:flex;flex-direction:column}
 .hero__kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;
   text-transform:uppercase;color:var(--accent);margin:0 0 1.05rem}
 h1{font-size:clamp(34px,4.9vw,66px);line-height:1.03;letter-spacing:-.026em;
   font-optical-sizing:auto;font-variation-settings:"SOFT" 0,"WONK" 1;font-weight:400;
   max-width:19ch;margin:0 0 .42em;text-wrap:balance}
 h1 em{font-style:italic;font-variation-settings:"SOFT" 40,"WONK" 1;color:var(--accent)}
-.hero__sub{font-size:clamp(18px,1.25vw,21px);color:var(--ink-2);max-width:58ch;line-height:1.5;margin:0}
+.hero__sub{font-size:clamp(18px,1.3vw,22px);color:var(--ink-2);max-width:58ch;line-height:1.52;margin:0 0 clamp(20px,3.4vw,48px)}
 .meta{margin:0;font-family:var(--mono);font-size:12px;line-height:1.6;
-  border-top:1px solid var(--rule);padding-top:.95rem}
+  border-top:1px solid var(--rule);padding-top:1rem;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.3rem}
 @media (min-width:1000px){.meta{border-top:0;border-left:1px solid var(--rule);
-  padding:.35rem 0 .35rem 1.4rem;margin-top:1.9rem}}
-.meta dt{color:var(--ink-3);font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-top:.95rem}
-.meta dt:first-of-type{margin-top:0}
-.meta dd{margin:.2rem 0 0;color:var(--ink)}
+  padding:.3rem 0 .3rem 1.5rem;margin-top:2.1rem;
+  grid-template-columns:minmax(0,1fr);gap:1.1rem}}
+.meta dt{color:var(--ink-3);font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.meta dd{margin:.25rem 0 0;color:var(--ink)}
 .meta a{border-bottom:1px solid var(--rule-2)}
 .meta a:hover{color:var(--accent);border-color:var(--accent)}
 .dot-sep{color:var(--rule-2)}
 .meta__note{color:var(--ink-3);font-size:11px}
 
 /* headline figures */
-.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
-  gap:1px;background:var(--rule);border-block:1px solid var(--rule);margin-top:clamp(26px,3.2vw,40px)}
-.fig{background:var(--paper);padding:1.05rem 1.1rem 1.15rem}
-.fig__n{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);line-height:1;font-optical-sizing:auto;
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:auto}
+@media (min-width:640px){.figs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.fig{background:var(--paper);padding:.82rem .9rem .9rem}
+@media (min-width:640px){.fig{padding:1rem 1.05rem 1.1rem}}
+.fig__n{font-family:var(--serif);font-size:clamp(26px,2.9vw,40px);line-height:1;font-optical-sizing:auto;
   font-variation-settings:"WONK" 0;font-weight:400;letter-spacing:-.02em;
   font-variant-numeric:lining-nums tabular-nums;display:block}
 .fig__l{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-3);margin-top:.5rem;display:block;line-height:1.45}
 
 /* ───────────────────── the field (signature) ───────────────────── */
-.field{margin-top:clamp(30px,3.6vw,46px)}
-.field__hd{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem}
-.field__t{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--ink-2)}
-.field__hint{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
-.field__note{font-size:14.5px;color:var(--ink-3);max-width:74ch;margin:.9rem 0 0;line-height:1.55}
+.field{margin-top:clamp(28px,3.2vw,42px)}
+.field__note{font-size:14.5px;color:var(--ink-3);max-width:76ch;margin:1.1rem 0 0;line-height:1.6;
+  padding-left:.8rem;border-left:1px solid var(--rule-2)}
 .field__scroll{overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;
   scrollbar-color:var(--rule-2) transparent}
 .field svg{display:block}
@@ -369,6 +370,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 <nav class="spine" aria-label="Sections">
   <ol id="spine">
     <li><a href="#top">Summary</a></li>
+    <li><a href="#the-field">The field</a></li>
     <li><a href="#problem">Problem</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#work">Work</a></li>
@@ -393,39 +395,49 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
         This project made xarray a first class citizen in Lumen, and fixed the layer
         underneath it when that layer could not carry the weight.
       </p>
+
+      <div class="figs">
+        <div class="fig"><span class="fig__n" data-stat="all.merged">122</span><span class="fig__l">Pull requests merged</span></div>
+        <div class="fig"><span class="fig__n" data-stat="xarray_sql.merged">11</span><span class="fig__l">Merged into xarray&#8209;sql</span></div>
+        <div class="fig"><span class="fig__n" data-stat="issues">74</span><span class="fig__l">Issues reported</span></div>
+        <div class="fig"><span class="fig__n" data-stat="lines">20.4k</span><span class="fig__l">Lines merged</span></div>
+      </div>
     </div>
+
     <dl class="meta">
-      <dt>Contributor</dt><dd><a href="https://github.com/ghostiee-11">Aman Kumar</a></dd>
-      <dt>Organisation</dt><dd>HoloViz, under NumFOCUS</dd>
-      <dt>Mentors</dt><dd><a href="https://github.com/ahuang11">Andrew Huang</a><br><a href="https://github.com/amaloney">Andy Maloney</a></dd>
-      <dt>Coding period</dt><dd>25 May &ndash; 24 August 2026<br><span class="meta__note">contributing since 4 March</span></dd>
-      <dt>Elsewhere</dt><dd><a href="https://github.com/ghostiee-11">GitHub</a> &nbsp;<span class="dot-sep">&middot;</span>&nbsp; <a href="https://www.linkedin.com/in/aman-kumar-ai/">LinkedIn</a></dd>
+      <div><dt>Contributor</dt><dd><a href="https://github.com/ghostiee-11">Aman Kumar</a></dd></div>
+      <div><dt>Organisation</dt><dd>HoloViz, under NumFOCUS</dd></div>
+      <div><dt>Mentors</dt><dd><a href="https://github.com/ahuang11">Andrew Huang</a><br><a href="https://github.com/amaloney">Andy Maloney</a></dd></div>
+      <div><dt>Coding period</dt><dd>25 May &ndash; 24 August 2026<br><span class="meta__note">contributing since 4 March</span></dd></div>
+      <div><dt>Elsewhere</dt><dd><a href="https://github.com/ghostiee-11">GitHub</a> &nbsp;<span class="dot-sep">&middot;</span>&nbsp; <a href="https://www.linkedin.com/in/aman-kumar-ai/">LinkedIn</a></dd></div>
     </dl>
   </div>
+</section>
 
-  <!-- ── signature: the contribution field ── -->
-  <div class="field rv" id="field">
-    <div class="field__hd">
-      <span class="field__t">The work as a field</span>
-      <span class="field__hint">click a cell to filter the index &darr;</span>
+<!-- ══════════════════ THE FIELD ══════════════════ -->
+<section id="the-field" class="band band--tight">
+  <div class="wrap">
+    <div class="col prose">
+      <p class="eyebrow">Six months, one chart</p>
+      <h2 class="sec">The work as a field</h2>
+      <p class="lede">
+        Every pull request, placed by the week it landed and the workstream it belongs to,
+        against the official GSoC 2026 calendar. Click any cell to filter the index at the
+        foot of the page.
+      </p>
     </div>
-    </div>
-    <div class="field__scroll">
-      <svg id="fieldsvg" role="img" aria-label="Grid of pull requests. Horizontal axis is week from March to August 2026, vertical axis is workstream. Cell shading is lines of merged code."></svg>
-    </div>
-    <div class="legend" id="fieldlegend"></div>
-    <p class="field__note">
-      Every pull request, placed by the week it landed and the workstream it belongs to,
-      against the official GSoC 2026 calendar. The 350 funded hours run from 25 May to
-      24 August. The columns left of that mark are the ramp up that earned the project.
-    </p>
-  </div>
 
-  <div class="figs rv">
-    <div class="fig"><span class="fig__n" data-stat="all.merged">122</span><span class="fig__l">Pull requests merged</span></div>
-    <div class="fig"><span class="fig__n" data-stat="xarray_sql.merged">11</span><span class="fig__l">Merged into xarray&#8209;sql</span></div>
-    <div class="fig"><span class="fig__n" data-stat="issues">74</span><span class="fig__l">Issues reported</span></div>
-    <div class="fig"><span class="fig__n" data-stat="lines">20.4k</span><span class="fig__l">Lines merged</span></div>
+    <div class="field rv" id="field">
+      <div class="field__scroll">
+        <svg id="fieldsvg" role="img" aria-label="Grid of pull requests. Horizontal axis is week from March to August 2026, vertical axis is workstream. Cell shading is lines of merged code."></svg>
+      </div>
+      <div class="legend" id="fieldlegend"></div>
+      <p class="field__note">
+        The 350 funded hours run from 25 May to 24 August. The columns left of that mark
+        are the ramp up that earned the project: 26 merged pull requests before the coding
+        period opened, including the two that became goals 4 and 5.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1006,7 +1018,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <p>
         Read from the GitHub API on 23 August 2026. Merged means merged. Filter by
         workstream, state or repository, or click a cell in
-        <a href="#top">the field</a> above.
+        <a href="#the-field">the field</a> above.
       </p>
     </div>
 
