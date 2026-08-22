@@ -519,7 +519,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <div class="wrap">
     <div class="col prose">
       <p class="eyebrow">What I built</p>
-      <h2 class="sec">Seven workstreams, and the papercuts underneath them</h2>
+      <h2 class="sec">Eight workstreams, and the papercuts underneath them</h2>
       <p class="lede">
         Nothing here landed as one big pull request at the end. Each item is its own
         reviewable change, which is why there are so many numbers.
@@ -712,7 +712,31 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       </article>
 
       <article class="card card--full rv">
-        <p class="card__k"><i class="dot" style="background:var(--ink-3)"></i> H &nbsp;&middot;&nbsp; Everything else in Lumen</p>
+        <p class="card__k"><i class="dot"></i> H &nbsp;&middot;&nbsp; Extension</p>
+        <h3>A whole package built on the extension points</h3>
+        <p style="max-width:72ch">
+          <a href="https://github.com/holoviz-topics/lumen-ourworldindata">lumen-ourworldindata</a>
+          lets Lumen explore <a href="https://ourworldindata.org/">Our World In Data</a>, the
+          public research database behind most global development questions. Roughly 12,200
+          charts are reachable, plus the much larger indicator catalog behind them. Nothing is
+          downloaded: OWID serves CSV and parquet over plain HTTPS and DuckDB reads those in
+          place, so the package supplies the discovery, the metadata a model needs to pick the
+          right series, and the reshapes that OWID's country and year tables always want.
+        </p>
+        <p style="max-width:72ch">
+          It is on this page because it is the proof that the extension surface holds. Every
+          piece of it, the source, the <code>OWIDTimeSeries</code> view, loading a chart by
+          slug or grapher URL, is written against Lumen's public extension points rather than
+          a fork, and an early review round deleted the bespoke views I had written in favour
+          of an extending-Lumen guide that shows how to build them. The repository has since
+          been transferred into the HoloViz organisation.
+        </p>
+        <p class="card__stat" data-ws-stat="owid"></p>
+        <ul class="chips" data-prs="holoviz-topics/lumen-ourworldindata#1,holoviz-topics/lumen-ourworldindata#2,holoviz-topics/lumen-ourworldindata#3,holoviz-topics/lumen-ourworldindata#4,holoviz-topics/lumen-ourworldindata#5,holoviz-topics/lumen-ourworldindata#6,holoviz-topics/lumen-ourworldindata#7,holoviz-topics/lumen-ourworldindata#8,holoviz-topics/lumen-ourworldindata#9,holoviz-topics/lumen-ourworldindata#10,holoviz-topics/lumen-ourworldindata#11"></ul>
+      </article>
+
+      <article class="card card--full rv">
+        <p class="card__k"><i class="dot" style="background:var(--ink-3)"></i> I &nbsp;&middot;&nbsp; Everything else in Lumen</p>
         <h3>The papercuts, which is how I earned the right to do the rest</h3>
         <p style="max-width:70ch">
           The largest bucket by count is not the headline work. It is 75 pull requests of
@@ -726,7 +750,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
         <p class="card__stat" data-ws-stat="lumen-core"></p>
         <ul class="chips" data-prs="holoviz/lumen#1923,holoviz/lumen#2000,holoviz/lumen#1924,holoviz/lumen#1922,holoviz/lumen#2017,holoviz/lumen#1785,holoviz/lumen#1761,holoviz/lumen#2020,holoviz/lumen#1798,holoviz/lumen#1819,holoviz/lumen#2007,holoviz/lumen#1909,holoviz/lumen#1910,holoviz/lumen#2006,holoviz/lumen#1750,holoviz/lumen#1719"></ul>
         <p style="margin-top:1rem;font-size:15.5px;color:var(--ink-3)">
-          All 156 pull requests are listed in <a class="ref" href="#index" style="border-bottom-color:var(--accent)">the index</a>.
+          All <span data-stat="all.total">167</span> pull requests are listed in <a class="ref" href="#index" style="border-bottom-color:var(--accent)">the index</a>.
         </p>
       </article>
 
@@ -930,7 +954,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   <div class="wrap">
     <div class="col prose">
       <p class="eyebrow">Contribution index</p>
-      <h2 class="sec">All 156 pull requests</h2>
+      <h2 class="sec">All <span data-stat="all.total">167</span> pull requests</h2>
       <p>
         Read from the GitHub API on 23 August 2026. Merged means merged. Filter by
         workstream, state or repository, or click a cell in
@@ -1017,8 +1041,10 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <a href="https://github.com/ahuang11">Andrew Huang</a> and
       <a href="https://github.com/amaloney">Andy Maloney</a> mentored this, reviewed a great
       deal of code, and were consistently specific rather than polite about what was wrong
-      with it. Several items on this page exist because Andrew filed the bug or asked for
-      the feature.
+      with it. Andrew was on Discord more or less throughout, reviewing, guiding and ideating
+      out loud with me rather than only at review time, and several items on this page exist
+      because he filed the bug or asked for the feature. lumen-ourworldindata started in one
+      of those conversations.
     </p>
     <p>
       <a href="https://github.com/philippjfr">Philipp Rudiger</a> reviewed and guided work
@@ -1069,7 +1095,7 @@ var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 var WSLABEL = {
   source:"Source", upstream:"Upstream", gridded:"Gridded", filters:"Filters",
-  geo:"Geospatial", narwhals:"Backends", catalog:"Catalogs",
+  geo:"Geospatial", narwhals:"Backends", catalog:"Catalogs", owid:"Our World In Data",
   "lumen-core":"Lumen core", ecosystem:"Ecosystem"
 };
 var GLYPH = {merged:"●", open:"○", draft:"◐", closed:"✕"};
@@ -1164,7 +1190,7 @@ function step(add){
 function drawField(){
   readRamp();
   var rows = D.wsOrder, W = D.weeks.length;
-  var padL = 92, padT = 20, padB = 26, cw = 26, ch = 22, gap = 2;
+  var padL = 118, padT = 20, padB = 26, cw = 26, ch = 22, gap = 2;
   var w = padL + W * cw + 8, h = padT + rows.length * ch + padB;
   svg.setAttribute("viewBox", "0 0 " + w + " " + h);
   svg.setAttribute("width", w); svg.setAttribute("height", h);

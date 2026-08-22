@@ -26,11 +26,12 @@ PR_REPOS = [
     "python/cpython", "jupyter-widgets/ipywidgets", "stac-utils/xpystac",
     "panel-extensions/panel-material-ui", "panel-extensions/panel-live-server",
     "numfocus/gsoc", "vinta/awesome-python", "academic/awesome-datascience",
+    "holoviz-topics/lumen-ourworldindata",
 ]
 ISSUE_REPOS = [
     "holoviz/lumen", "holoviz/panel", "holoviz/holoviews", "xqlsystems/xarray-sql",
     "narwhals-dev/narwhals", "bokeh/bokeh", "stac-utils/xpystac",
-    "panel-extensions/panel-material-ui",
+    "panel-extensions/panel-material-ui", "holoviz-topics/lumen-ourworldindata",
 ]
 
 # A pull request belongs to the workstream that claims it; "<repo>#*" claims a whole repo.
@@ -51,12 +52,14 @@ WORKSTREAMS = {
                  "holoviz/lumen#1997", "holoviz/lumen#1995", "holoviz/lumen#1993",
                  "holoviz/lumen#1725", "holoviz/panel#8664", "holoviz/panel#8521"],
     "catalog":  ["holoviz/lumen#1867", "holoviz/lumen#1889", "stac-utils/xpystac#*"],
+    "owid":     ["holoviz-topics/lumen-ourworldindata#*"],
 }
 WS_ORDER = ["source", "upstream", "gridded", "filters", "geo", "narwhals",
-            "catalog", "lumen-core", "ecosystem"]
+            "catalog", "owid", "lumen-core", "ecosystem"]
 CORE_REPOS = {"holoviz/lumen", "xqlsystems/xarray-sql", "narwhals-dev/narwhals",
               "stac-utils/xpystac", "holoviz/param", "holoviz/panel",
-              "holoviz/holoviews", "holoviz/hvplot"}
+              "holoviz/holoviews", "holoviz/hvplot",
+              "holoviz-topics/lumen-ourworldindata"}
 
 WEEK0 = datetime.date(2026, 3, 2)     # Monday of the week the first pull request opened
 WEEK_LAST = datetime.date(2026, 8, 24)
