@@ -149,28 +149,31 @@ h3.sub{font-size:clamp(20px,1.9vw,25px);margin:0 0 .4em}
 .spine li.on a{opacity:1;color:var(--accent);transform:translateX(3px)}
 
 /* ─────────────────────────── hero ─────────────────────────── */
-.hero{padding-block:clamp(42px,7vw,80px) clamp(30px,4vw,48px)}
-.hero__grid{display:grid;gap:clamp(26px,3vw,54px);align-items:end}
-@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1fr) 250px}}
+.hero{padding-block:clamp(30px,3.4vw,46px) clamp(26px,3vw,40px)}
+.hero__grid{display:grid;gap:clamp(24px,3vw,48px);align-items:start}
+@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1fr) 236px}}
 .hero__kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;
-  text-transform:uppercase;color:var(--accent);margin:0 0 1.6rem}
-h1{font-size:clamp(38px,6.6vw,82px);line-height:1.01;letter-spacing:-.028em;
-  font-variation-settings:"SOFT" 0,"WONK" 1;font-weight:400;max-width:15ch;margin:0 0 .34em}
+  text-transform:uppercase;color:var(--accent);margin:0 0 1.05rem}
+h1{font-size:clamp(34px,4.9vw,66px);line-height:1.03;letter-spacing:-.026em;
+  font-optical-sizing:auto;font-variation-settings:"SOFT" 0,"WONK" 1;font-weight:400;
+  max-width:19ch;margin:0 0 .42em;text-wrap:balance}
 h1 em{font-style:italic;font-variation-settings:"SOFT" 40,"WONK" 1;color:var(--accent)}
-.hero__sub{font-size:clamp(19px,1.5vw,23px);color:var(--ink-2);max-width:56ch;line-height:1.5;margin:0 0 2rem}
+.hero__sub{font-size:clamp(18px,1.25vw,21px);color:var(--ink-2);max-width:58ch;line-height:1.5;margin:0}
 .meta{margin:0;font-family:var(--mono);font-size:12px;line-height:1.6;
   border-top:1px solid var(--rule);padding-top:.95rem}
-@media (min-width:1000px){.meta{border-top:0;border-left:1px solid var(--rule);padding:.2rem 0 .2rem 1.4rem}}
+@media (min-width:1000px){.meta{border-top:0;border-left:1px solid var(--rule);
+  padding:.35rem 0 .35rem 1.4rem;margin-top:1.9rem}}
 .meta dt{color:var(--ink-3);font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-top:.95rem}
 .meta dt:first-of-type{margin-top:0}
 .meta dd{margin:.2rem 0 0;color:var(--ink)}
 .meta a{border-bottom:1px solid var(--rule-2)}
 .meta a:hover{color:var(--accent);border-color:var(--accent)}
 .dot-sep{color:var(--rule-2)}
+.meta__note{color:var(--ink-3);font-size:11px}
 
 /* headline figures */
 .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
-  gap:1px;background:var(--rule);border-block:1px solid var(--rule);margin-top:clamp(34px,4.5vw,52px)}
+  gap:1px;background:var(--rule);border-block:1px solid var(--rule);margin-top:clamp(26px,3.2vw,40px)}
 .fig{background:var(--paper);padding:1.05rem 1.1rem 1.15rem}
 .fig__n{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);line-height:1;font-optical-sizing:auto;
   font-variation-settings:"WONK" 0;font-weight:400;letter-spacing:-.02em;
@@ -179,11 +182,12 @@ h1 em{font-style:italic;font-variation-settings:"SOFT" 40,"WONK" 1;color:var(--a
   color:var(--ink-3);margin-top:.5rem;display:block;line-height:1.45}
 
 /* ───────────────────── the field (signature) ───────────────────── */
-.field{margin-top:clamp(38px,5.5vw,64px)}
+.field{margin-top:clamp(30px,3.6vw,46px)}
 .field__hd{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem}
 .field__t{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-2)}
 .field__hint{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
+.field__note{font-size:14.5px;color:var(--ink-3);max-width:74ch;margin:.9rem 0 0;line-height:1.55}
 .field__scroll{overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;
   scrollbar-color:var(--rule-2) transparent}
 .field svg{display:block}
@@ -394,7 +398,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <dt>Contributor</dt><dd><a href="https://github.com/ghostiee-11">Aman Kumar</a></dd>
       <dt>Organisation</dt><dd>HoloViz, under NumFOCUS</dd>
       <dt>Mentors</dt><dd><a href="https://github.com/ahuang11">Andrew Huang</a><br><a href="https://github.com/amaloney">Andy Maloney</a></dd>
-      <dt>Period</dt><dd>4 March &ndash; 21 August 2026</dd>
+      <dt>Coding period</dt><dd>25 May &ndash; 24 August 2026<br><span class="meta__note">contributing since 4 March</span></dd>
       <dt>Elsewhere</dt><dd><a href="https://github.com/ghostiee-11">GitHub</a> &nbsp;<span class="dot-sep">&middot;</span>&nbsp; <a href="https://www.linkedin.com/in/aman-kumar-ai/">LinkedIn</a></dd>
     </dl>
   </div>
@@ -405,10 +409,16 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       <span class="field__t">The work as a field</span>
       <span class="field__hint">click a cell to filter the index &darr;</span>
     </div>
+    </div>
     <div class="field__scroll">
       <svg id="fieldsvg" role="img" aria-label="Grid of pull requests. Horizontal axis is week from March to August 2026, vertical axis is workstream. Cell shading is lines of merged code."></svg>
     </div>
     <div class="legend" id="fieldlegend"></div>
+    <p class="field__note">
+      Every pull request, placed by the week it landed and the workstream it belongs to,
+      against the official GSoC 2026 calendar. The 350 funded hours run from 25 May to
+      24 August. The columns left of that mark are the ramp up that earned the project.
+    </p>
   </div>
 
   <div class="figs rv">
@@ -1090,7 +1100,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       changes that had nothing to do with my project.
       <a href="https://github.com/jbednar">James Bednar</a>,
       <a href="https://github.com/droumis">Demetris Roumis</a> and
-      <a href="https://github.com/hoxbro">Simon Hoxbro</a> reviewed, triaged and answered
+      <a href="https://github.com/hoxbro">Simon Hansen</a> reviewed, triaged and answered
       questions throughout, in issues, on the biweekly calls and on Discord, where someone was
       reliably around when I was stuck. The wider HoloViz community answered plenty more.
     </p>
@@ -1225,7 +1235,16 @@ function step(add){
 var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 var WSSHORT = {geo:"Geo", owid:"OWID", "lumen-core":"Core", narwhals:"Backends",
                upstream:"Upstream", ecosystem:"Other"};
-var GSOC_START = "2026-05-25";          // GSoC coding period opens
+// Official GSoC 2026 timeline. Dates are the published UTC milestones.
+var PHASES = [
+  {from:"2026-03-02", to:"2026-03-16", full:"BEFORE APPLYING",   short:"PRE"},
+  {from:"2026-03-16", to:"2026-03-31", full:"APPLICATIONS",      short:"APPLY"},
+  {from:"2026-03-31", to:"2026-04-30", full:"REVIEW",            short:"REVIEW"},
+  {from:"2026-04-30", to:"2026-05-25", full:"COMMUNITY BONDING", short:"BONDING"},
+  {from:"2026-05-25", to:"2026-08-25", full:"CODING PERIOD",     short:"CODING", main:true}
+];
+var MIDTERM = "2026-07-10";             // midterm evaluation deadline
+var FINALWK = "2026-08-17";             // final week opens
 
 function drawField(){
   readRamp();
@@ -1236,7 +1255,7 @@ function drawField(){
   var label = function(ws){ return (tight && WSSHORT[ws]) || WSLABEL[ws]; };
   var longest = rows.reduce(function(m, ws){ return Math.max(m, label(ws).length); }, 0);
   var padL = Math.ceil(longest * 6.15) + 22;           // monospace 10px, plus the tick gap
-  var padT = 34, padB = 30, gap = 2;
+  var padT = 62, padB = 30, gap = 2;
   var cw = Math.floor((avail - padL - 10) / W);
   cw = Math.max(17, Math.min(46, cw));                 // legible floor, sane ceiling
   var ch = Math.max(20, Math.min(30, Math.round(cw * 0.92)));
@@ -1254,27 +1273,53 @@ function drawField(){
            '" height="' + ch + '" fill="var(--paper-2)"/>';
   });
 
-  // month rules and labels along the top
-  var gsocX = null;
+  // fractional week position, so a phase boundary lands on its real date
+  var day0 = Date.parse(D.weeks[0] + "T00:00:00Z");
+  function xAt(d){ return padL + ((Date.parse(d + "T00:00:00Z") - day0) / 6048e5) * cw; }
+  var gridR = padL + W * cw;
+  function clampX(x){ return Math.max(padL, Math.min(gridR, x)); }
+
+  // month rules and labels
   D.weeks.forEach(function(d, wi){
     var dt = new Date(d + "T00:00:00");
-    var x = padL + wi * cw;
-    if (d >= GSOC_START && gsocX === null) gsocX = x;
     if (dt.getUTCDate() > 7) return;
+    var x = padL + wi * cw;
     out += '<line x1="' + x + '" y1="' + padT + '" x2="' + x + '" y2="' + (padT + gridH) +
            '" stroke="var(--rule)" stroke-width="1"/>';
-    out += '<text x="' + (x + 3) + '" y="' + (padT - 12) + '" font-size="10" letter-spacing="0.08em">' +
+    out += '<text x="' + (x + 3) + '" y="' + (padT - 10) + '" font-size="10" letter-spacing="0.08em">' +
            MONTHS[dt.getUTCMonth()].toUpperCase() + '</text>';
   });
 
-  // the GSoC coding period, marked rather than assumed
-  if (gsocX !== null){
-    out += '<line x1="' + gsocX + '" y1="' + (padT - 26) + '" x2="' + gsocX + '" y2="' + (padT + gridH + 6) +
-           '" stroke="var(--accent)" stroke-width="1.4"/>';
-    out += '<text x="' + (gsocX + 6) + '" y="' + (padT + gridH + 22) + '" font-size="9.5" fill="var(--accent)" ' +
-           'letter-spacing="0.09em">GSOC CODING PERIOD OPENS</text>';
-    out += '<text x="' + (padL + 2) + '" y="' + (padT + gridH + 22) + '" font-size="9.5" letter-spacing="0.09em">RAMP UP</text>';
-  }
+  // the official GSoC phases, as a strip above the months
+  var sy = 8, sh = 15;
+  PHASES.forEach(function(ph){
+    var x1 = clampX(xAt(ph.from)), x2 = clampX(xAt(ph.to)), segW = x2 - x1;
+    if (segW < 3) return;
+    out += '<rect x="' + x1 + '" y="' + sy + '" width="' + (segW - 1.5) + '" height="' + sh +
+           '" fill="' + (ph.main ? "var(--accent)" : "var(--paper-3)") +
+           '" stroke="' + (ph.main ? "none" : "var(--rule-2)") + '" stroke-width="1"/>';
+    var txt = null;
+    if (segW > ph.full.length * 6.1 + 14) txt = ph.full;
+    else if (segW > ph.short.length * 6.1 + 12) txt = ph.short;
+    if (txt) {
+      out += '<text x="' + (x1 + segW / 2) + '" y="' + (sy + sh / 2 + 3.2) + '" font-size="8.5" ' +
+             'text-anchor="middle" letter-spacing="0.1em" fill="' +
+             (ph.main ? "var(--on-accent)" : "var(--ink-3)") + '">' + txt + '</text>';
+    }
+    if (!ph.main) return;
+    out += '<line x1="' + x1 + '" y1="' + sy + '" x2="' + x1 + '" y2="' + (padT + gridH) +
+           '" stroke="var(--accent)" stroke-width="1.2"/>';
+  });
+
+  // midterm and final week, ticked against the grid
+  [{d: MIDTERM, l: "MIDTERM"}, {d: FINALWK, l: "FINAL WEEK"}].forEach(function(m){
+    var x = clampX(xAt(m.d));
+    out += '<line x1="' + x + '" y1="' + (padT + gridH) + '" x2="' + x + '" y2="' + (padT + gridH + 7) +
+           '" stroke="var(--ink-3)" stroke-width="1"/>';
+    if (cw < 24) return;
+    out += '<text x="' + (x + 4) + '" y="' + (padT + gridH + 21) + '" font-size="9" letter-spacing="0.09em">' +
+           m.l + '</text>';
+  });
 
   // row labels
   rows.forEach(function(ws, ri){
