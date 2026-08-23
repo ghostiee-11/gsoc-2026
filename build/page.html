@@ -489,7 +489,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
       </p>
     </div>
     <figure class="plate rv">
-      <video src="assets/hero.mp4" autoplay muted loop playsinline preload="metadata"
+      <video src="assets/hero.mp4" data-autoplay muted loop playsinline preload="none"
              style="border:1px solid var(--rule);width:100%"
              aria-label="Screen recording: a NetCDF file dropped into Lumen AI, queried in English, and answered with a chart."></video>
       <figcaption>The result, end to end. Drop a NetCDF file into Lumen AI, ask a question in English, get a chart. No glue code, and the coordinates survive the trip.</figcaption>
@@ -834,7 +834,7 @@ out.isel(time=0).air.plot()</code></pre>
         </p>
         <figure>
           <video src="assets/lumen-choropleth.mp4" poster="assets/lumen-choropleth-poster.jpg"
-                 controls muted playsinline preload="none"
+                 data-autoplay controls muted loop playsinline preload="none"
                  aria-label="Screen recording: uploading geographic data to Lumen AI and asking for a choropleth, which renders as a shaded map."></video>
           <figcaption>Ask for a choropleth, get a map. Before this it returned a blank panel with no error, which is the worst kind of failure because there is nothing to search for.</figcaption>
         </figure>
@@ -893,8 +893,8 @@ out.isel(time=0).air.plot()</code></pre>
           been transferred into the HoloViz organisation.
         </p>
         <figure class="duo-fig">
-          <video src="assets/owid-demo.mp4" poster="assets/owid-poster.jpg" controls muted
-                 playsinline preload="none"
+          <video src="assets/owid-demo.mp4" poster="assets/owid-poster.jpg" data-autoplay
+                 controls muted loop playsinline preload="none"
                  aria-label="Screen recording: asking Our World In Data a question in plain English inside Lumen and getting a chart back."></video>
           <figcaption>
             Asking a plain English question and getting an answer computed from OWID's own
@@ -1639,6 +1639,29 @@ if (!reduce){
 } else {
   document.querySelectorAll(".rv").forEach(function(el){ el.classList.add("in"); });
 }
+
+/* videos play when they scroll into view, so nothing downloads until it is on screen */
+(function(){
+  var vids = [].slice.call(document.querySelectorAll("video[data-autoplay]"));
+  if (!vids.length) return;
+  if (reduce || !("IntersectionObserver" in window)){
+    vids.forEach(function(v){ v.setAttribute("controls",""); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting){
+        if (v.preload !== "auto"){ v.preload = "auto"; v.load(); }
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){ v.setAttribute("controls",""); });
+      } else if (!v.paused){
+        v.pause();
+      }
+    });
+  }, {threshold: 0.35});
+  vids.forEach(function(v){ io.observe(v); });
+})();
 
 /* spine scroll spy */
 var links = [].slice.call(document.querySelectorAll("#spine a"));
