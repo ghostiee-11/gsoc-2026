@@ -14,6 +14,14 @@
 <meta property="og:title" content="Teaching Lumen to speak N-dimensional science">
 <meta property="og:description" content="GSoC 2026 final work product. Lumen + xarray for HoloViz / NumFOCUS. 111 merged PRs across 20 repositories.">
 <meta property="og:url" content="https://ghostiee-11.github.io/gsoc-2026/">
+<meta property="og:image" content="https://ghostiee-11.github.io/gsoc-2026/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Teaching Lumen to speak N-dimensional science. Aman Kumar, HoloViz under NumFOCUS. 122 pull requests merged, 11 merged upstream, 74 issues reported, 20.4k lines merged.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Teaching Lumen to speak N-dimensional science">
+<meta name="twitter:description" content="GSoC 2026 final work product. Lumen + xarray for HoloViz / NumFOCUS. 122 merged pull requests across 21 repositories.">
+<meta name="twitter:image" content="https://ghostiee-11.github.io/gsoc-2026/assets/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:opsz,wght,ital@6..72,400..600,0;6..72,400..600,1&family=JetBrains+Mono:wght@400;500;700&display=swap">
@@ -340,6 +348,13 @@ summary::before{content:"+ ";color:var(--accent);font-weight:700}
 details[open] summary::before{content:"\2212 "}
 details[open] summary{border-bottom:1px solid var(--rule)}
 details .inner{padding:1.1rem}
+figure.code{margin:1.4rem 0 0;border:1px solid var(--rule);background:var(--paper-2)}
+.code__cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin:0;padding:.6rem .9rem;border:0;border-bottom:1px solid var(--rule)}
+.code__cap a{border-bottom:1px solid var(--rule-2)}
+figure.code pre{margin:0;padding:1rem 1.1rem;overflow-x:auto;scrollbar-width:thin}
+figure.code code{font-family:var(--mono);font-size:12.5px;line-height:1.75;
+  background:none;border:0;padding:0;color:var(--ink);white-space:pre}
 .stack{margin:clamp(26px,4vw,44px) 0;overflow-x:auto;scrollbar-width:thin}
 .stack svg{width:100%;min-width:660px;height:auto;display:block}
 
@@ -383,6 +398,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
     <li><a href="#the-field">The field</a></li>
     <li><a href="#problem">Problem</a></li>
     <li><a href="#stack">Stack</a></li>
+    <li><a href="#using">Using it</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#dive1">Round trip</a></li>
     <li><a href="#dive2">Real data</a></li>
@@ -582,6 +598,77 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
   </div>
 </section>
 
+<!-- ══════════════════ USING IT ══════════════════ -->
+<section id="using" class="band">
+  <div class="wrap">
+    <div class="col prose">
+      <p class="eyebrow">Using it</p>
+      <h2 class="sec">What this looks like from the outside</h2>
+      <p>
+        The point of all of it is that the glue code goes away. A NetCDF, Zarr, HDF5 or
+        GRIB file becomes SQL tables, one per data variable, with the coordinates as
+        columns and the metadata still attached.
+      </p>
+    </div>
+
+    <div class="col">
+      <figure class="code">
+        <figcaption class="code__cap">Python</figcaption>
+        <pre><code>pip install "lumen[xarray]"
+
+from lumen.sources.xarray_sql import XArraySQLSource
+
+source = XArraySQLSource(uri="air_temperature.nc")
+source.get_tables()
+# ['air']
+
+source.execute("SELECT lat, lon, AVG(air) FROM air GROUP BY lat, lon")</code></pre>
+      </figure>
+
+      <figure class="code">
+        <figcaption class="code__cap">Back out as a Dataset, which is what <a class="ref" data-pr="xqlsystems/xarray-sql#167">#167</a> added</figcaption>
+        <pre><code>import xarray_sql as qr
+
+ds  = xr.open_dataset("air_temperature.nc", chunks="auto")
+ctx = qr.from_dataset(ds)
+
+# lazy: the isel below becomes a DataFusion filter, not a full read
+out = ctx.sql("SELECT * FROM air").to_dataset()
+out.isel(time=0).air.plot()</code></pre>
+      </figure>
+
+      <figure class="code">
+        <figcaption class="code__cap">Or skip the code entirely</figcaption>
+        <pre><code>lumen-ai serve air.mon.ltm.nc
+
+# then ask: "plot the mean air temperature over lat and lon as a heatmap"</code></pre>
+      </figure>
+    </div>
+
+    <div class="col prose">
+      <h3 class="sub" style="margin-top:2.2rem">Shipped, not just merged</h3>
+      <p>
+        This is in software people have installed, which matters more than a green merge
+        badge. Of my 76 merged Lumen pull requests, 51 are in a tagged release already and
+        the remaining 25 are on <code>main</code> awaiting the next one.
+      </p>
+    </div>
+    <div class="col">
+      <div class="tw">
+        <table>
+          <thead><tr><th>Release</th><th>Date</th><th>Contains</th></tr></thead>
+          <tbody>
+            <tr><td class="num"><a href="https://github.com/holoviz/lumen/releases/tag/v1.2.0">lumen v1.2.0</a></td><td class="num">10 Jun 2026</td><td>29 of my merged pull requests, including the xarray source and its AI wiring</td></tr>
+            <tr><td class="num"><a href="https://github.com/holoviz/lumen/releases/tag/v1.3.0">lumen v1.3.0</a></td><td class="num">29 Jul 2026</td><td>22 more, including gridded plotting, the cftime fixes and the geospatial work</td></tr>
+            <tr><td class="num"><a href="https://github.com/xqlsystems/xarray-sql/releases/tag/v0.3.0">xarray-sql 0.3.0</a></td><td class="num">Jun 2026</td><td>the lazy SQL to xarray round trip, closing an issue open since 2025</td></tr>
+            <tr><td class="num"><a href="https://github.com/xqlsystems/xarray-sql/releases/tag/v0.3.3">xarray-sql 0.3.3</a></td><td class="num">Aug 2026</td><td>the cftime projection fix found by driving Lumen at real climate files</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════ WORKSTREAMS ══════════════════ -->
 <section id="work" class="band">
   <div class="wrap">
@@ -745,6 +832,12 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
           geometry as a Vega-Lite geoshape
           (<a class="ref" data-pr="holoviz/lumen#1998">#1998</a>) came out of the same thread.
         </p>
+        <figure>
+          <video src="assets/lumen-choropleth.mp4" poster="assets/lumen-choropleth-poster.jpg"
+                 controls muted playsinline preload="none"
+                 aria-label="Screen recording: uploading geographic data to Lumen AI and asking for a choropleth, which renders as a shaded map."></video>
+          <figcaption>Ask for a choropleth, get a map. Before this it returned a blank panel with no error, which is the worst kind of failure because there is nothing to search for.</figcaption>
+        </figure>
         <p class="card__stat" data-ws-stat="geo"></p>
         <ul class="chips" data-prs="holoviz/lumen#1903,holoviz/lumen#1905,holoviz/lumen#1996,holoviz/lumen#1998,holoviz/lumen#1999,holoviz/lumen#2001,holoviz/lumen#1997,holoviz/lumen#1995,holoviz/lumen#1993,holoviz/lumen#1725,holoviz/panel#8664,holoviz/panel#8521"></ul>
       </article>
